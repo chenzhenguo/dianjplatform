@@ -74,6 +74,7 @@ public class WechatService {
 			textMessage.setFromUserName(toUserName);
 			textMessage.setCreateTime(new Date().getTime());
 			textMessage.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);
+			textMessage.setContent(respContent);
 			// textMessage.setFuncFlag(0);
 			// 将文本消息对象转换成xml字符串
 			respMessage = MessageUtil.textMessageToXml(textMessage);
@@ -143,26 +144,26 @@ public class WechatService {
 					}
 				} else {
 					// 微信扩展接口（支持二次开发，例如：翻译，天气）
-//					List<WeixinExpandconfigEntity> weixinExpandconfigEntityLst = weixinExpandconfigService
-//							.findByQueryString(" FROM WeixinExpandconfigEntity");
-//					if (weixinExpandconfigEntityLst.size() != 0) {
-//						for (WeixinExpandconfigEntity wec : weixinExpandconfigEntityLst) {
-//							boolean findflag = false;// 是否找到关键字信息
-//							// 如果已经找到关键字并处理业务，结束循环。
-//							if (findflag) {
-//								break;// 如果找到结束循环
-//							}
-//							String[] keys = wec.getKeyword().split(",");
-//							for (String k : keys) {
-//								if (content.indexOf(k) != -1) {
-//									String className = wec.getClassname();
-//									//TODO
-//									findflag = true;// 改变标识，已经找到关键字并处理业务，结束循环。
-//									break;// 当前关键字信息处理完毕，结束当前循环
-//								}
-//							}
-//						}
-//					}
+					List<WeixinExpandconfigEntity> weixinExpandconfigEntityLst = weixinExpandconfigService
+							.findByQueryString(" FROM WeixinExpandconfigEntity");
+					if (weixinExpandconfigEntityLst.size() != 0) {
+						for (WeixinExpandconfigEntity wec : weixinExpandconfigEntityLst) {
+							boolean findflag = false;// 是否找到关键字信息
+							// 如果已经找到关键字并处理业务，结束循环。
+							if (findflag) {
+								break;// 如果找到结束循环
+							}
+							String[] keys = wec.getKeyword().split(",");
+							for (String k : keys) {
+								if (content.indexOf(k) != -1) {
+									String className = wec.getClassname();
+									//TODO
+									findflag = true;// 改变标识，已经找到关键字并处理业务，结束循环。
+									break;// 当前关键字信息处理完毕，结束当前循环
+								}
+							}
+						}
+					}
 
 				}
 			}

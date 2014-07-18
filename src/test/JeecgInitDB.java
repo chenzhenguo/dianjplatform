@@ -46,7 +46,7 @@ public class JeecgInitDB {
 	public static Connection getConnection() throws ClassNotFoundException, SQLException{
 		if(con == null){
 			Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/jeecg", "root","root");
+            con=DriverManager.getConnection("jdbc:mysql://172.16.11.19:3306/jeewx", "root","123");
 		}
 		return con;
 	}
@@ -67,7 +67,7 @@ public class JeecgInitDB {
         Statement st=null;
         ResultSet rs=null;
 		try {
-			cfg.setDirectoryForTemplateLoading(new File("E:/Workspace-jeecg/jeecg-v3-simple-new/src/test"));
+			cfg.setDirectoryForTemplateLoading(new File("C:/Users/lizhong/git/dianjplatform/src/test"));
 			cfg.setObjectWrapper(new DefaultObjectWrapper());
 			Template temp = cfg.getTemplate("init.ftl","UTF-8");
             con=getConnection();
